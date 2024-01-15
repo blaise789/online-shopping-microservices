@@ -1,12 +1,16 @@
 package com.dailycodewithme.orderservice.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.*;
+import lombok.extern.java.Log;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "t_order_line_items")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class OrderLineItems {
     @Id

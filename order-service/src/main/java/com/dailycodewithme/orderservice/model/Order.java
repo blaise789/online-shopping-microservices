@@ -1,17 +1,13 @@
 package com.dailycodewithme.orderservice.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "t_orders")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
@@ -20,6 +16,10 @@ public class Order {
     private Long id;
     private  String orderNumber;
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "order_id",
+            referencedColumnName = "id"
+    )
     private List<OrderLineItems> orderLineItemsList;
 
 }

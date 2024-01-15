@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -29,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @Testcontainers
-
+@AutoConfigureMockMvc
 class ProductServiceApplicationTests {
 
 	@Container
@@ -39,19 +41,20 @@ class ProductServiceApplicationTests {
 
 	@DynamicPropertySource
    static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry){
-		dynamicPropertyRegistry.add("spring.data.mongo.uri",mongoDBContainer::getReplicaSetUrl);
+		dynamicPropertyRegistry.add("spring.data.mongodb.uri",mongoDBContainer::getReplicaSetUrl);
    }
    @Autowired
    private MockMvc mockMvc;
-  @Autowired
-  private ObjectMapper objectMapper;
+  private ObjectMapper objectMapper=new ObjectMapper();
   static {
 	  mongoDBContainer.start();
   }
 
 	@Test
 void ShouldCreateProduct() throws Exception{
+
 		ProductRequest productRequest=getProductRequest();
+
         String productRequestString=objectMapper.writeValueAsString(productRequest);
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/product").contentType(MediaType.APPLICATION_JSON).content(
 productRequestString
@@ -59,12 +62,7 @@ productRequestString
 		Assertions.assertEquals(1, productRepository.findAll().size());
 
 	}
-	@Test
-	void shouldFindAllProducts() throws  Exception{
-mockMvc.perform(MockMvcRequestBuilders.get("/api/product").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-Assertions.assertEquals(1,);
 
-	}
 
 
 
