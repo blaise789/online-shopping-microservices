@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f4ffbb78-05c9-462b-936d-ee7d2d4dfed9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/src/main/java/com/codewithme/microservicesspringboot/MicroservicesSpringbootApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservices-springboot/src/test/java/com/codewithme/microservicesspringboot/MicroservicesSpringbootApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/online_shopping_microservice.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/microservices-springboot/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservices-springboot/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/OrderServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/dto/OrderLineItemsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/dto/OrderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/model/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/model/OrderLineItems.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/repository/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/dailycodewithme/orderservice/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/test/java/com/dailycodewithme/orderservice/OrderServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/ProductServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/controller/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/dto/ProductRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/dto/ProductResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/repository/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/programmingBlaise/product/service/service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/test/java/com/programmingBlaise/product/service/ProductServiceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2azxsvCOyqfRSIFBg9oFFJCLpo0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "20",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "XML"
+    ]
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn verify" />
+      <command value="mvn clean" />
+      <command value="mvn clean verify" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.ProductServiceApplicationTests">
+    <configuration name="InventoryServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dailycodewithme.invetoryservice.InventoryServiceApplication" />
+      <module name="inventory-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dailycodewithme.invetoryservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dailycodewithme.orderservice.OrderServiceApplication" />
+      <module name="order-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dailycodewithme.orderservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.programmingBlaise.product.service.ProductServiceApplication" />
+      <module name="product-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programmingBlaise.product.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="product-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programmingBlaise.product.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.programmingBlaise.product.service" />
+      <option name="MAIN_CLASS_NAME" value="com.programmingBlaise.product.service.ProductServiceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplicationTests.ShouldCreateProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="product-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programmingBlaise.product.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.programmingBlaise.product.service" />
+      <option name="MAIN_CLASS_NAME" value="com.programmingBlaise.product.service.ProductServiceApplicationTests" />
+      <option name="METHOD_NAME" value="ShouldCreateProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProductServiceApplicationTests" />
+        <item itemvalue="JUnit.ProductServiceApplicationTests.ShouldCreateProduct" />
+        <item itemvalue="Application.ProductServiceApplication" />
+        <item itemvalue="Application.InventoryServiceApplication" />
+        <item itemvalue="Application.OrderServiceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4ffbb78-05c9-462b-936d-ee7d2d4dfed9" name="Changes" comment="" />
+      <created>1705335419128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705335419128</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/product-service/src/test/java/com/programmingBlaise/product/service/ProductServiceApplicationTests.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/invetory-service/src/main/java/com/dailycodewithme/inventory_service/InventoryServiceApplication.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
