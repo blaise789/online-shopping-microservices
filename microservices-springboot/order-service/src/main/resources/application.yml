@@ -1,6 +1,5 @@
 server:
-  port: 3500
-
+  port: 6000
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,5 +10,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
-
-

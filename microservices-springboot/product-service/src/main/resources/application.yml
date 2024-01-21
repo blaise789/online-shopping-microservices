@@ -4,3 +4,4 @@ spring:
   data:
     mongodb:
        uri: mongodb+srv://blaise:test1234@cluster0.ayoacp2.mongodb.net/products
+
