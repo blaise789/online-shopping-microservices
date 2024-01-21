@@ -4,4 +4,14 @@ spring:
   data:
     mongodb:
        uri: mongodb+srv://blaise:test1234@cluster0.ayoacp2.mongodb.net/products
+  application:
+    name: product-service
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
 
