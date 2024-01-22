@@ -32,7 +32,7 @@
 //
 //    public void placeOrder(OrderRequest orderRequest){
 //
-//        Order order=new Order();
+//     a   Order order=new Order();
 //        order.setOrderNumber(UUID.randomUUID().toString());
 //        List<OrderLineItems> orderLineItemsList=orderRequest.getOrderLineItemsDtoList().stream().map(this::mapToDto).toList();
 //        order.setOrderLineItemsList(orderLineItemsList);
@@ -41,14 +41,7 @@
 //        // http://api/inventory/iphone_13,Iphone_2
 ////        http://localhost:{port}/api/inventory?skuCode="iphone_13"&sku_code="iphone_12"
 //// stock
-////     InventoryResponse[] inventoryResponseArray= webClientBuilder.build().get()
-////               .uri("http://inventory/api/inventory",
-////                       uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
-////               .retrieve()
-////               .bodyToMono(InventoryResponse[].class)
-////               .block();
-//        InventoryResponse[] inventoryResponseArray=restTemplate.getForObject("")
-//        boolean allProductsInStock=Arrays.stream(inventoryResponseArray).allMatch(inventoryResponse -> inventoryResponse.isInStock());
+////
 //        if(allProductsInStock) {
 //            orderRepository.save(order);
 //        }

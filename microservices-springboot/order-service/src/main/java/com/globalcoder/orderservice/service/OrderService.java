@@ -8,10 +8,12 @@ import com.globalcoder.orderservice.model.OrderLineItems;
 import com.globalcoder.orderservice.repository.OrderRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Arrays;
@@ -20,13 +22,13 @@ import java.util.UUID;
 
 @Service
 @Transactional
+@Slf4j
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public OrderService(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
+    @Autowired
+    private WebClient.Builder webClientBuilder;
 
     public Order placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
@@ -38,24 +40,16 @@ public class OrderService {
 
         order.setOrderLineItemsList(orderLineItemsList);
         List<String> skuCodes = orderLineItemsList.stream().map(OrderLineItems::getSkuCode).toList();
-
-        // Build the URI for the inventory service
-        String inventoryApiUrl = "http://localhost:8080/api/inventory";
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(inventoryApiUrl)
-                .queryParam("skuCode", skuCodes);
-
-        // Call the inventory service using RestTemplate
-        RestTemplate restTemplate=new RestTemplate();
-        InventoryResponse[] inventoryResponseArray = restTemplate.getForObject(
-                uriBuilder.toUriString(),
-                InventoryResponse[].class
-        );
-
-        // Check if all products are in stock
-        boolean allProductsInStock = Arrays.stream(inventoryResponseArray).allMatch(InventoryResponse::isInStock);
-
+//        System.out.println(skuCodes);
+        InventoryResponse[] inventoryResponseArray= webClientBuilder.build().get()
+               .uri("http://inventory-service/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
+               .retrieve()
+               .bodyToMono(InventoryResponse[].class)
+               .block();
+//        System.out.println(inventoryResponseArray);
+        boolean allProductsInStock=Arrays.stream(inventoryResponseArray).allMatch(inventoryResponse -> inventoryResponse.isInStock());
         if (allProductsInStock) {
-           return   orderRepository.save(order);
+             return orderRepository.save(order);
         } else {
             throw new IllegalArgumentException("The product is not in stock. Please try again later.");
         }

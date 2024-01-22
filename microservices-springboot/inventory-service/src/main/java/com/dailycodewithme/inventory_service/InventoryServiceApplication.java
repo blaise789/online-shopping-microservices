@@ -26,7 +26,7 @@ public class InventoryServiceApplication {
 			inventory.setQuantity(1);
             Inventory inventory1=new Inventory();
 			inventory1.setSkuCode("prod2");
-			inventory1.setQuantity(0);
+			inventory1.setQuantity(2);
 			inventoryRepository.save(inventory);
 			inventoryRepository.save(inventory1);
 

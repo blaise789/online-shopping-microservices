@@ -24,12 +24,17 @@ spring:
         - id: product-service
           uri: lb://product-service
           predicates:
-            - Path=/api/product**
+            - Path=/api/product/**
 
         - id: order-service
           uri: lb://order-service
           predicates:
-            - Path=/api/order/**
+            - Path=/api/order
+        - id: inventory-service
+          uri: lb://inventory-service
+          predicates:
+            - Path=/api/inventory/**
+
 #          filters:
 #            - name: CircuitBreaker
 #              args:
