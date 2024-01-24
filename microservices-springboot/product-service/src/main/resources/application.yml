@@ -1,9 +1,15 @@
 server:
   port: 4000
 spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
   data:
     mongodb:
-       uri: mongodb+srv://blaise:test1234@cluster0.ayoacp2.mongodb.net/products
+      uri: mongodb://localhost:27017/products
+#       uri: mongodb+srv://blaise:test1234@cluster0.ayoacp2.mongodb.net/products
   application:
     name: product-service
 eureka:
@@ -11,7 +17,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka:password@localhost:8761/eureka
   instance:
     hostname: localhost
 

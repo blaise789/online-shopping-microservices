@@ -1,8 +1,11 @@
 package com.globalcoder.orderservice.service;
 
+import brave.Span;
+import brave.Tracer;
 import com.globalcoder.orderservice.dto.InventoryResponse;
 import com.globalcoder.orderservice.dto.OrderLineItemsDto;
 import com.globalcoder.orderservice.dto.OrderRequest;
+import com.globalcoder.orderservice.event.OrderPlacedEvent;
 import com.globalcoder.orderservice.model.Order;
 import com.globalcoder.orderservice.model.OrderLineItems;
 import com.globalcoder.orderservice.repository.OrderRepository;
@@ -10,6 +13,7 @@ import com.globalcoder.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -25,12 +29,19 @@ import java.util.UUID;
 @Slf4j
 public class OrderService {
     @Autowired
+    private Tracer tracer;
+
+    @Autowired
     private OrderRepository orderRepository;
 
+
+    @Autowired
+
+    private KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-    public Order placeOrder(OrderRequest orderRequest) {
+    public String placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
 
@@ -40,22 +51,35 @@ public class OrderService {
 
         order.setOrderLineItemsList(orderLineItemsList);
         List<String> skuCodes = orderLineItemsList.stream().map(OrderLineItems::getSkuCode).toList();
-//        System.out.println(skuCodes);
-        InventoryResponse[] inventoryResponseArray= webClientBuilder.build().get()
-               .uri("http://inventory-service/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
-               .retrieve()
-               .bodyToMono(InventoryResponse[].class)
-               .block();
+        Span inventoryServiceLookup = tracer.nextSpan().name("inventory service lookup");
+        try (Tracer.SpanInScope spanInScope = tracer.withSpanInScope(inventoryServiceLookup.start())) {
+            log.info("calling inventory service");
+            InventoryResponse[] inventoryResponseArray = webClientBuilder.build().get()
+                    .uri("http://inventory-service/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
+                    .retrieve()
+                    .bodyToMono(InventoryResponse[].class)
+                    .block();
 //        System.out.println(inventoryResponseArray);
-        boolean allProductsInStock=Arrays.stream(inventoryResponseArray).allMatch(inventoryResponse -> inventoryResponse.isInStock());
-        if (allProductsInStock) {
-             return orderRepository.save(order);
-        } else {
-            throw new IllegalArgumentException("The product is not in stock. Please try again later.");
-        }
-    }
+            boolean allProductsInStock = Arrays.stream(inventoryResponseArray).allMatch(inventoryResponse -> inventoryResponse.isInStock());
+            if (allProductsInStock) {
+                orderRepository.save(order);
+                kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(order.getOrderNumber()));
+                return "order placed successfully";
+            } else {
+                throw new IllegalArgumentException("The product is not in stock. Please try again later.");
+            }
 
-    private OrderLineItems mapToDto(OrderLineItemsDto orderLineItemsDto) {
+
+
+
+        } finally {
+            inventoryServiceLookup.abandon();
+        }
+
+
+
+    }
+    private OrderLineItems mapToDto(OrderLineItemsDto orderLineItemsDto){
         OrderLineItems orderLineItems = new OrderLineItems();
         orderLineItems.setPrice(orderLineItemsDto.getPrice());
         orderLineItems.setQuantity(orderLineItemsDto.getQuantity());

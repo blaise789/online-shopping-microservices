@@ -48,6 +48,7 @@
 		<module>product-service</module>
 		<module>discovery-server</module>
 		<module>microservice-gateway</module>
+		<module>notification-service</module>
 	</modules>
 	<build>
 		<plugins>
