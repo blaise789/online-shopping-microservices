@@ -36,7 +36,6 @@ public class OrderService {
 
 
     @Autowired
-
     private KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
     @Autowired
     private WebClient.Builder webClientBuilder;

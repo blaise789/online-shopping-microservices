@@ -17,13 +17,12 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 @Slf4j
 public class InventoryService {
-
     private final InventoryRepository inventoryRepository;
     @Transactional(readOnly = true)
     @SneakyThrows
     public List<InventoryResponse> isInStock(List<String> skuCode) {
         log.info("wait started");
-        Thread.sleep(10000);
+        Thread.sleep(10);
         log.info("wait ended");
         return inventoryRepository.findBySkuCodeIn(skuCode).stream().map(inventory ->
             InventoryResponse.builder()

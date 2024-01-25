@@ -3,18 +3,26 @@ server:
 spring:
   application:
     name: order-service
-
   kafka:
-    bootstrap-service: localhost:9092
+    bootstrap-servers: localhost:9092
     default-template-topic: notificationTopic
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            type:
+              mapping: com.globalcoder.orderservice.event.OrderPlacedEvent
+              trusted:
+               packages: *
+
 
   zipkin:
     base-url: http://localhost:9411
   sleuth:
-    integration: true
+    integration:
+      enabled: true
     sampler:
       probability: 1.0
 
